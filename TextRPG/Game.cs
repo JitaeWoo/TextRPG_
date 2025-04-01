@@ -30,13 +30,15 @@ namespace TextRPG
             sceneDic.Add("Square", new SquareScene());
             sceneDic.Add("Quest_01_Start", new Quest_01_StartScene());
             sceneDic.Add("ForestEntrance", new ForestEntranceScene());
+            sceneDic.Add("Forest", new ForestScene());
+            sceneDic.Add("MeetGirl", new MeetGirlScene());
 
 
             // 처음시작할 씬을 선정
             curScene = sceneDic["Title"];
 
             player = new Player();
-            player.Power = 10;
+            player.Power = 8;
             player.Speed = 8;
             player.Gold = 0;
         }

@@ -13,13 +13,19 @@ namespace TextRPG.Scenes
             Game.PrintInfo();
             Util.Print("당신은 마을 중앙의 큰 광장에 도착했다.", ConsoleColor.White, 1000);
             Util.Print("광장에는 이런저런 사람들이 한가로이 시간을 보내는 것이 보인다.", ConsoleColor.White, 1000);
-            Util.Print("그 중 지나가는 사람을 붙잡고 애절한 표정으로 무언가 말하는 여인도 보인다.", ConsoleColor.White, 1000);
+            if (!Game.Player.HasQuest("Quest_01"))
+            {
+                Util.Print("그 중 지나가는 사람을 붙잡고 애절한 표정으로 무언가 말하는 여인도 보인다.", ConsoleColor.White, 1000);
+            }
         }
 
         public override void Choice()
         {
             Console.WriteLine("1. 마을 거리로 돌아간다.");
-            Console.WriteLine("2. 여인에게 말을 걸어본다.");
+            if (!Game.Player.HasQuest("Quest_01"))
+            {
+                Console.WriteLine("2. 여인에게 말을 걸어본다.");
+            }
         }
 
         public override void Result()
@@ -30,8 +36,15 @@ namespace TextRPG.Scenes
                     Console.WriteLine("거리로 돌아갑니다...");
                     break;
                 case ConsoleKey.D2:
-                    Console.WriteLine("여인 쪽으로 걸어가 무슨 일인지 물어봅니다.");
-                    break;
+                    if (!Game.Player.HasQuest("Quest_01"))
+                    {
+                        Console.WriteLine("여인 쪽으로 걸어가 무슨 일인지 물어봅니다.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("잘못 입력 하셨습니다. 다시 입력해주세요.");
+                    }
+                        break;
                 default:
                     Console.WriteLine("잘못 입력 하셨습니다. 다시 입력해주세요.");
                     break;
@@ -51,7 +64,10 @@ namespace TextRPG.Scenes
                     Game.ChangeScene("Town");
                     break;
                 case ConsoleKey.D2:
-                    Game.ChangeScene("Quest_01_Start");
+                    if (!Game.Player.HasQuest("Quest_01"))
+                    {
+                        Game.ChangeScene("Quest_01_Start");
+                    }
                     break;
             }
         }

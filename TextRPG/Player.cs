@@ -18,9 +18,24 @@ namespace TextRPG
         private int _gold;
         public int Gold { get { return _gold; } set { _gold = value;  } }
 
+        private List<Quest> _currentQuests = new List<Quest>();
+
         public void AddItem(Item item)
         {
             _inventory.Add(item);
+        }
+
+        public bool HasItem(string itemName)
+        {
+            foreach(Item i in _inventory)
+            {
+                if(i.Name == itemName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void PrintItems()
@@ -31,6 +46,24 @@ namespace TextRPG
                 Console.WriteLine($"설명 : {item.Info}");
                 Console.WriteLine();
             }
+        }
+
+        public void AddQuset(Quest quest)
+        {
+            _currentQuests.Add(quest);
+        }
+
+        public bool HasQuest(string questID)
+        {
+            foreach(Quest q in _currentQuests)
+            {
+                if(q.ID == questID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

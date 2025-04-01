@@ -32,6 +32,7 @@ namespace TextRPG.Scenes
             switch (input)
             {
                 case ConsoleKey.D1:
+                    Game.Player.AddQuset(new Quest("Quest_01", "하루아침에 사라진 여인의 딸을 찾아주자."));
                     Util.Print("\"감사합니다..! 감사합니다!\"", ConsoleColor.White, 1000);
                     Util.Print("여인이 거듭 감사인사를 하며 조금 해진 인형 하나를 건넵니다.", ConsoleColor.White, 1000);
                     Util.Print("\"제 딸아이가 아끼던 인형입니다. 보여주면 바로 알거에요.\"", ConsoleColor.White, 1000);
